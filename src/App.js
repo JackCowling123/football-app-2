@@ -213,7 +213,7 @@ class App extends React.Component {
       const currentPlayer = players[e.target.id];
       currentPlayer.name = newValue;
       this.setState({currentPlayer});
-      
+      this.forceUpdate()
   }
 
 
@@ -247,14 +247,14 @@ class App extends React.Component {
                                    id={id}
                                    className="player-edit"
                                    type="text"
-                                   defaultValue={number}
+                                   value={number}
                                    onChange={this.handleNumberChange}
                                />
                                <input
                                    id={id}
                                    className="player-edit"
                                    type="text"
-                                   defaultValue={name}
+                                   value={name}
                                    onChange={this.handleNameChange}
                                />
                            </div>

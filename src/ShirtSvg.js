@@ -13,7 +13,7 @@ function ShirtSvg(props) {
                 id={myPlayer.id}
                 className="player-name"
                 type="text"
-                defaultValue={myPlayer.name}
+                value={myPlayer.name}
                 onChange={props.handleNameChange}
                 size="100" />
         </div>

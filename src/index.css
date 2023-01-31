@@ -1,3 +1,7 @@
+:root {
+  --svg-colour: blue;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,7 +11,118 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html, body {
+  height: 100%;
+  width: 100%;
 }
+
+#root {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+.App {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.sidebar {
+  display: flex; /*added*/
+  flex-direction: column; /*added*/
+  float: left;
+  width: 15%;
+}
+
+.player-text-wrapper {
+  display: flex;
+}
+
+.player-edit {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.pitch-div {
+  width: 85%;
+  display: flex;
+  justify-content: center;
+}
+
+.pitch {
+  float: right;
+  background-color: #3ec902;
+  display: grid;
+  aspect-ratio: 68 / 105;
+  grid-auto-rows: 1fr
+}
+
+.pitch-zone {
+  min-height: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 0px 10px;
+}
+
+.pz-duo {
+  justify-content: center;
+}
+
+.pz-trio {
+  justify-content: space-evenly;
+
+}
+
+.pz-wide {
+  justify-content: space-between;
+}
+
+.shirt-wrap {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  aspect-ratio: 8 / 10;
+  max-width: 100px;
+}
+
+.shirt-wrap:only-child  {
+   margin: 0 auto;
+}
+
+.svgWrap {
+
+}
+
+.mySvg {
+  max-height: 50%;
+  max-width: 50%;
+  fill: var(--svg-colour);
+  display: flex;
+  margin: auto;
+}
+
+.player-name {
+  text-align: center;
+}
+
+input.alt {
+  display: flex;
+  border: none;
+  text-align: center;
+}
+
+input.alt:focus {
+  border: 1px inset #999;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+
+
+
+
+
+
+

@@ -8,7 +8,6 @@ class Pitch extends React.Component {
         let thisIndex = this.props.idToChild;
         let thisFormation = formations[thisIndex].lineup;
         let thesePlayers = this.props.playersToChild;
-        let playersRendered = 0;
         return (
             thisFormation.map((player, index) => {
                 let players = [...Array(player)];

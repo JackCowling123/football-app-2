@@ -4,10 +4,12 @@ import ReactDOM from 'react-dom';
 import ShirtSvg from './ShirtSvg.js';
 
 class Pitch extends React.Component {
+    handleNameChange = this.props.handleNameChange;
     render() {
         let thisIndex = this.props.idToChild;
         let thisFormation = formations[thisIndex].lineup;
         let thesePlayers = this.props.playersToChild;
+        let thisPlayer = -1;
         return (
             thisFormation.map((player, index) => {
                 let players = [...Array(player)];
@@ -15,9 +17,13 @@ class Pitch extends React.Component {
                     return (
                         <div key={index} className="pitch-zone pz-trio">
                             {players.map(() => {
+                                thisPlayer++
                                 return (
-                                    <ShirtSvg/>
-                                )
+                                    <ShirtSvg
+                                        playerToChild = {thesePlayers[thisPlayer]}
+                                        handleNameChange = {this.handleNameChange}
+                                    />
+                                );
                             })}
                         </div>
                     );
@@ -25,8 +31,12 @@ class Pitch extends React.Component {
                     return (
                         <div key={index} className="pitch-zone pz-duo">
                             {players.map(() => {
+                                thisPlayer++
                                 return (
-                                    <ShirtSvg />
+                                    <ShirtSvg
+                                        playerToChild = {thesePlayers[thisPlayer]}
+                                        handleNameChange = {this.handleNameChange}
+                                    />
                                 );
                             })}
                         </div>
@@ -35,8 +45,12 @@ class Pitch extends React.Component {
                     return (
                         <div key={index} className="pitch-zone pz-wide">
                             {players.map(() => {
+                                thisPlayer++
                                 return (
-                                    <ShirtSvg />
+                                    <ShirtSvg
+                                        playerToChild = {thesePlayers[thisPlayer]}
+                                        handleNameChange = {this.handleNameChange}
+                                    />
                                 );
                             })}
                         </div>
@@ -45,8 +59,12 @@ class Pitch extends React.Component {
                     return (
                         <div key={index} className="pitch-zone pz-wide">
                             {players.map(() => {
+                                thisPlayer++
                                 return (
-                                    <ShirtSvg />
+                                    <ShirtSvg
+                                        playerToChild = {thesePlayers[thisPlayer]}
+                                        handleNameChange = {this.handleNameChange}
+                                    />
                                 );
                             })}
                         </div>
@@ -55,9 +73,13 @@ class Pitch extends React.Component {
                     return (
                         <div key={index} className="pitch-zone pz-trio">
                             {players.map(() => {
+                                thisPlayer++
                                 return (
                                     <div className="shirt-wrap">
-                                        <ShirtSvg />
+                                        <ShirtSvg
+                                            playerToChild = {thesePlayers[thisPlayer]}
+                                            handleNameChange = {this.handleNameChange}
+                                        />
                                     </div>
                                 );
                             })}
@@ -67,8 +89,12 @@ class Pitch extends React.Component {
                     return (
                         <div key={index} className="pitch-zone pz-wide">
                             {players.map(() => {
+                                thisPlayer++
                                 return (
-                                    <ShirtSvg />
+                                    <ShirtSvg
+                                        playerToChild = {thesePlayers[thisPlayer]}
+                                        handleNameChange = {this.handleNameChange}
+                                    />
                                 );
                             })}
                         </div>
@@ -77,8 +103,12 @@ class Pitch extends React.Component {
                     return (
                         <div key={index} className="pitch-zone pz-wide">
                             {players.map(() => {
+                                thisPlayer++
                                 return (
-                                    <ShirtSvg />
+                                    <ShirtSvg
+                                        playerToChild = {thesePlayers[thisPlayer]}
+                                        handleNameChange = {this.handleNameChange}
+                                    />
                                 );
                             })}
                         </div>
@@ -87,8 +117,12 @@ class Pitch extends React.Component {
                     return (
                         <div key={index} className="pitch-zone pz-trio">
                             {players.map(() => {
+                                thisPlayer++
                                 return (
-                                    <ShirtSvg />
+                                    <ShirtSvg
+                                        playerToChild = {thesePlayers[thisPlayer]}
+                                        handleNameChange = {this.handleNameChange}
+                                    />
 
                                 );
                             })}
@@ -98,8 +132,12 @@ class Pitch extends React.Component {
                     return (
                         <div key={index} className="pitch-zone pz-duo">
                             {players.map(() => {
+                                thisPlayer++
                                 return (
-                                    <ShirtSvg />
+                                    <ShirtSvg
+                                        playerToChild = {thesePlayers[thisPlayer]}
+                                        handleNameChange = {this.handleNameChange}
+                                    />
                                 );
                             })}
                         </div>
@@ -108,8 +146,12 @@ class Pitch extends React.Component {
                     return (
                         <div key={index} className="pitch-zone">
                             {players.map(() => {
+                                thisPlayer++
                                 return (
-                                    <ShirtSvg />
+                                    <ShirtSvg
+                                        playerToChild = {thesePlayers[thisPlayer]}
+                                        handleNameChange = {this.handleNameChange}
+                                    />
                                 );
                             })}
                         </div>
@@ -171,6 +213,7 @@ class App extends React.Component {
       const currentPlayer = players[e.target.id];
       currentPlayer.name = newValue;
       this.setState({currentPlayer});
+      
   }
 
 
@@ -224,6 +267,7 @@ class App extends React.Component {
                            idToChild = {this.state.id}
                            colourToChild = {this.state.hex}
                            playersToChild = {this.state.players}
+                           handleNameChange = {this.handleNameChange}
                        />
                    </div>
                </div>
@@ -246,20 +290,6 @@ const formations = [
   {id: 10, label: "4-4-2", lineup: [1, 4, 0, 4, 0, 2]},
   {id: 11, label: "5-3-2", lineup: [1, 3, 2, 3, 0, 2]},
   {id: 12, label: "5-4-1", lineup: [1, 5, 0, 4, 0, 1]}
-]
-
-const players = [
-    {id: 0, name: "player", number: 1},
-    {id: 1, name: "player", number: 2},
-    {id: 2, name: "player", number: 3},
-    {id: 3, name: "player", number: 4},
-    {id: 4, name: "player", number: 5},
-    {id: 5, name: "player", number: 6},
-    {id: 6, name: "player", number: 7},
-    {id: 7, name: "player", number: 8},
-    {id: 8, name: "player", number: 9},
-    {id: 9, name: "player", number: 10},
-    {id: 10, name: "player", number: 11},
 ]
 
 const colours = [

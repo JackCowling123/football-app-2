@@ -1,7 +1,9 @@
 import './App.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import ShirtSvg from './ShirtSvg.js';
+
 
 class Pitch extends React.Component {
     handleNameChange = this.props.handleNameChange;
@@ -205,6 +207,8 @@ class App extends React.Component {
       const currentPlayer = players[e.target.id];
       currentPlayer.number = newValue;
       this.setState({currentPlayer});
+      const digits = newValue.toString().split('');
+      const realDigits = digits.map(Number);
   }
 
   handleNameChange = (e) => {
@@ -213,7 +217,6 @@ class App extends React.Component {
       const currentPlayer = players[e.target.id];
       currentPlayer.name = newValue;
       this.setState({currentPlayer});
-      this.forceUpdate()
   }
 
 

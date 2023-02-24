@@ -1,5 +1,8 @@
 :root {
   --svg-colour: blue;
+  --svg-second-colour: white;
+  --number-fill: white;
+  --number-stroke: black;
 }
 
 body {
@@ -98,9 +101,21 @@ html, body {
 .mySvg {
   max-height: 50%;
   max-width: 50%;
-  fill: var(--svg-colour);
   display: flex;
   margin: auto;
+}
+
+.mySvgPrimary {
+  fill: var(--svg-colour);
+}
+
+.mySvgSecondary {
+  fill: var(--svg-second-colour);
+}
+
+.numberColour {
+  fill: var(--number-fill);
+  stroke: var(--number-stroke);
 }
 
 .shirt-wrap p {

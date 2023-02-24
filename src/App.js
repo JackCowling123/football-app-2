@@ -1,168 +1,9 @@
 import './App.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Pitch from "./Pitch";
 
-import ShirtSvg from './ShirtSvg.js';
 
-
-class Pitch extends React.Component {
-    handleNameChange = this.props.handleNameChange;
-    render() {
-        let thisIndex = this.props.idToChild;
-        let thisFormation = formations[thisIndex].lineup;
-        let thesePlayers = this.props.playersToChild;
-        let thisPlayer = -1;
-        return (
-            thisFormation.map((player, index) => {
-                let players = [...Array(player)];
-                if (thisIndex === 1 && index === 4) {
-                    return (
-                        <div key={index} className="pitch-zone pz-trio">
-                            {players.map(() => {
-                                thisPlayer++
-                                return (
-                                    <ShirtSvg
-                                        playerToChild = {thesePlayers[thisPlayer]}
-                                        handleNameChange = {this.handleNameChange}
-                                    />
-                                );
-                            })}
-                        </div>
-                    );
-                } else if (thisIndex === 2 && index === 3) {
-                    return (
-                        <div key={index} className="pitch-zone pz-duo">
-                            {players.map(() => {
-                                thisPlayer++
-                                return (
-                                    <ShirtSvg
-                                        playerToChild = {thesePlayers[thisPlayer]}
-                                        handleNameChange = {this.handleNameChange}
-                                    />
-                                );
-                            })}
-                        </div>
-                    );
-                } else if (thisIndex === 2 && index === 4) {
-                    return (
-                        <div key={index} className="pitch-zone pz-wide">
-                            {players.map(() => {
-                                thisPlayer++
-                                return (
-                                    <ShirtSvg
-                                        playerToChild = {thesePlayers[thisPlayer]}
-                                        handleNameChange = {this.handleNameChange}
-                                    />
-                                );
-                            })}
-                        </div>
-                    );
-                } else if (thisIndex === 3 && index === 3) {
-                    return (
-                        <div key={index} className="pitch-zone pz-wide">
-                            {players.map(() => {
-                                thisPlayer++
-                                return (
-                                    <ShirtSvg
-                                        playerToChild = {thesePlayers[thisPlayer]}
-                                        handleNameChange = {this.handleNameChange}
-                                    />
-                                );
-                            })}
-                        </div>
-                    );
-                } else if (thisIndex === 4 && index === 3) {
-                    return (
-                        <div key={index} className="pitch-zone pz-trio">
-                            {players.map(() => {
-                                thisPlayer++
-                                return (
-                                    <div className="shirt-wrap">
-                                        <ShirtSvg
-                                            playerToChild = {thesePlayers[thisPlayer]}
-                                            handleNameChange = {this.handleNameChange}
-                                        />
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    );
-                } else if (thisIndex === 7 && index === 4) {
-                    return (
-                        <div key={index} className="pitch-zone pz-wide">
-                            {players.map(() => {
-                                thisPlayer++
-                                return (
-                                    <ShirtSvg
-                                        playerToChild = {thesePlayers[thisPlayer]}
-                                        handleNameChange = {this.handleNameChange}
-                                    />
-                                );
-                            })}
-                        </div>
-                    );
-                } else if (thisIndex === 11 && index === 2) {
-                    return (
-                        <div key={index} className="pitch-zone pz-wide">
-                            {players.map(() => {
-                                thisPlayer++
-                                return (
-                                    <ShirtSvg
-                                        playerToChild = {thesePlayers[thisPlayer]}
-                                        handleNameChange = {this.handleNameChange}
-                                    />
-                                );
-                            })}
-                        </div>
-                    );
-                } else if (player === 3) {
-                    return (
-                        <div key={index} className="pitch-zone pz-trio">
-                            {players.map(() => {
-                                thisPlayer++
-                                return (
-                                    <ShirtSvg
-                                        playerToChild = {thesePlayers[thisPlayer]}
-                                        handleNameChange = {this.handleNameChange}
-                                    />
-
-                                );
-                            })}
-                        </div>
-                    );
-                } else if (player === 2) {
-                    return (
-                        <div key={index} className="pitch-zone pz-duo">
-                            {players.map(() => {
-                                thisPlayer++
-                                return (
-                                    <ShirtSvg
-                                        playerToChild = {thesePlayers[thisPlayer]}
-                                        handleNameChange = {this.handleNameChange}
-                                    />
-                                );
-                            })}
-                        </div>
-                    );
-                } else if (player >= 1) {
-                    return (
-                        <div key={index} className="pitch-zone">
-                            {players.map(() => {
-                                thisPlayer++
-                                return (
-                                    <ShirtSvg
-                                        playerToChild = {thesePlayers[thisPlayer]}
-                                        handleNameChange = {this.handleNameChange}
-                                    />
-                                );
-                            })}
-                        </div>
-                    );
-                }
-            })
-        );
-    }
-}
 
 class App extends React.Component {
   constructor(props) {
@@ -183,8 +24,11 @@ class App extends React.Component {
         ],
         id: 0,
         label: "3-1-4-2",
+        shirtArr: {label: "Plain", shirtCode: 'ShirtSvg'},
         lineup: [1, 3, 1, 4, 0, 2],
-        hex: '#000099'
+        hexPrim: '#000099',
+        hexSec: '#000099',
+        numberColour: {numPrime: '#000000', numSec: '#ffffff'}
     };
   };
 
@@ -193,13 +37,33 @@ class App extends React.Component {
       this.setState(formations[index]);
   }
 
+    handleShirtChange = (e) => {
+        const id = e.target.value;
+        const shirtArr = shirtType[id];
+        this.setState({shirtArr: shirtArr});
+    }
+
   handleColourChange = (e) => {
       const id = e.target.value;
       const colourArr = colours[id];
       this.setState({hex: colourArr.hex});
       document.documentElement.style.setProperty('--svg-colour', colourArr.hex);
-      console.log(colourArr );
   }
+
+  handleSecondColourChange = (e) => {
+      const id = e.target.value;
+      const colourArr = colours[id];
+      this.setState({hex: colourArr.hex});
+      document.documentElement.style.setProperty('--svg-second-colour', colourArr.hex);
+  }
+
+    handleNumberColourChange = (e) => {
+        const id = e.target.value;
+        const numbArr = numberColours[id];
+        this.setState({numberColour: numbArr});
+        document.documentElement.style.setProperty('--number-fill', numbArr.numPrime);
+        document.documentElement.style.setProperty('--number-stroke', numbArr.numSec)
+    }
 
   handleNumberChange = (e) => {
       const newValue = e.target.value;
@@ -234,9 +98,36 @@ class App extends React.Component {
                            }
                        )}
                    </select>
+                   <select onChange={this.handleShirtChange} >
+                       <option>{}</option>
+                       {shirtType.map(({label}, index) => {
+                               return (
+                                   <option value={index}>{label}</option>
+                               );
+                           }
+                       )}
+                   </select>
                    <select onChange={this.handleColourChange} >
                        <option>{}</option>
                        {colours.map(({label}, index) => {
+                               return (
+                                   <option value={index}>{label}</option>
+                               );
+                           }
+                       )}
+                   </select>
+                   <select onChange={this.handleSecondColourChange} >
+                       <option>{}</option>
+                       {colours.map(({label}, index) => {
+                               return (
+                                   <option value={index}>{label}</option>
+                               );
+                           }
+                       )}
+                   </select>
+                   <select onChange={this.handleNumberColourChange} >
+                       <option>{}</option>
+                       {numberColours.map(({label}, index) => {
                                return (
                                    <option value={index}>{label}</option>
                                );
@@ -271,6 +162,7 @@ class App extends React.Component {
                            colourToChild = {this.state.hex}
                            playersToChild = {this.state.players}
                            handleNameChange = {this.handleNameChange}
+                           formations = {this.state.lineup}
                        />
                    </div>
                </div>
@@ -299,9 +191,25 @@ const colours = [
     {label: "blue", hex: '#000099'},
     {label: "red", hex: '#ff0000'},
     {label: "yellow", hex: '#ffff00'},
-    {label: "green", hex: '#009933'},
+    {label: "green", hex: '#009900'},
     {label: "pink", hex: '#ff00ff'},
     {label: "purple", hex: '#9900ff'},
+    {label: "white", hex: '#ffffff'},
+    {label: "black", hex: '#000000'},
+]
+
+const numberColours = [
+    {label: "red", numPrime: '#ff0000', numSec: '#ffffff'},
+    {label: "black", numPrime: '#000000', numSec: '#ffffff'},
+    {label: "white", numPrime: '#ffffff', numSec: '#000000'},
+    {label: "dark blue", numPrime: '#000066', numSec: '#ffffff'},
+]
+
+const shirtType = [
+    {label: "Plain", shirtCode: 'ShirtSvg'},
+    {label: "Raglan", shirtCode: 'ShirtSleeveSvg'},
+    {label: "Striped", shirtCode: 'ShirtStripeSvg'},
+    {label: "Hooped", shirtCode: 'ShirtHoopSvg'},
 ]
 
 

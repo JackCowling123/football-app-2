@@ -1,8 +1,5 @@
 import React from 'react';
 import ShirtSvg from "./ShirtSvg";
-import ShirtSleeveSvg from "./ShirtSleeveSvg";
-import ShirtStripeSvg from "./ShirtStripeSvg";
-import ShirtHoopSvg from "./ShirtHoopSvg";
 
 class Pitch extends React.Component {
     handleNameChange = this.props.handleNameChange;
@@ -11,6 +8,7 @@ class Pitch extends React.Component {
         let thisLineup = this.props.formations;
         let thesePlayers = this.props.playersToChild;
         let thisPlayer = -1;
+        let thisShirtType = this.props.shirtType;
         return (
             thisLineup.map((player, index) => {
                 let players = [...Array(player)];
@@ -20,9 +18,10 @@ class Pitch extends React.Component {
                             {players.map(() => {
                                 thisPlayer++
                                 return (
-                                    <ShirtHoopSvg
+                                    <ShirtSvg
                                         playerToChild = {thesePlayers[thisPlayer]}
                                         handleNameChange = {this.handleNameChange}
+                                        shirtToChild = {thisShirtType}
                                     />
                                 );
                             })}
@@ -34,9 +33,10 @@ class Pitch extends React.Component {
                             {players.map(() => {
                                 thisPlayer++
                                 return (
-                                    <ShirtHoopSvg
+                                    <ShirtSvg
                                         playerToChild = {thesePlayers[thisPlayer]}
                                         handleNameChange = {this.handleNameChange}
+                                        shirtToChild = {thisShirtType}
                                     />
                                 );
                             })}
@@ -48,9 +48,10 @@ class Pitch extends React.Component {
                             {players.map(() => {
                                 thisPlayer++
                                 return (
-                                    <ShirtHoopSvg
+                                    <ShirtSvg
                                         playerToChild = {thesePlayers[thisPlayer]}
                                         handleNameChange = {this.handleNameChange}
+                                        shirtToChild = {thisShirtType}
                                     />
                                 );
                             })}
@@ -62,9 +63,10 @@ class Pitch extends React.Component {
                             {players.map(() => {
                                 thisPlayer++
                                 return (
-                                    <ShirtHoopSvg
+                                    <ShirtSvg
                                         playerToChild = {thesePlayers[thisPlayer]}
                                         handleNameChange = {this.handleNameChange}
+                                        shirtToChild = {thisShirtType}
                                     />
                                 );
                             })}
@@ -77,9 +79,10 @@ class Pitch extends React.Component {
                                 thisPlayer++
                                 return (
                                     <div className="shirt-wrap">
-                                        <ShirtHoopSvg
+                                        <ShirtSvg
                                             playerToChild = {thesePlayers[thisPlayer]}
                                             handleNameChange = {this.handleNameChange}
+                                            shirtToChild = {thisShirtType}
                                         />
                                     </div>
                                 );
@@ -92,9 +95,10 @@ class Pitch extends React.Component {
                             {players.map(() => {
                                 thisPlayer++
                                 return (
-                                    <ShirtHoopSvg
+                                    <ShirtSvg
                                         playerToChild = {thesePlayers[thisPlayer]}
                                         handleNameChange = {this.handleNameChange}
+                                        shirtToChild = {thisShirtType}
                                     />
                                 );
                             })}
@@ -106,9 +110,10 @@ class Pitch extends React.Component {
                             {players.map(() => {
                                 thisPlayer++
                                 return (
-                                    <ShirtHoopSvg
+                                    <ShirtSvg
                                         playerToChild = {thesePlayers[thisPlayer]}
                                         handleNameChange = {this.handleNameChange}
+                                        shirtToChild = {thisShirtType}
                                     />
                                 );
                             })}
@@ -120,9 +125,10 @@ class Pitch extends React.Component {
                             {players.map(() => {
                                 thisPlayer++
                                 return (
-                                    <ShirtHoopSvg
+                                    <ShirtSvg
                                         playerToChild = {thesePlayers[thisPlayer]}
                                         handleNameChange = {this.handleNameChange}
+                                        shirtToChild = {thisShirtType}
                                     />
 
                                 );
@@ -135,9 +141,10 @@ class Pitch extends React.Component {
                             {players.map(() => {
                                 thisPlayer++
                                 return (
-                                    <ShirtHoopSvg
+                                    <ShirtSvg
                                         playerToChild = {thesePlayers[thisPlayer]}
                                         handleNameChange = {this.handleNameChange}
+                                        shirtToChild = {thisShirtType}
                                     />
                                 );
                             })}
@@ -149,9 +156,10 @@ class Pitch extends React.Component {
                             {players.map(() => {
                                 thisPlayer++
                                 return (
-                                    <ShirtHoopSvg
+                                    <ShirtSvg
                                         playerToChild = {thesePlayers[thisPlayer]}
                                         handleNameChange = {this.handleNameChange}
+                                        shirtToChild = {thisShirtType}
                                     />
                                 );
                             })}

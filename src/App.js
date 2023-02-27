@@ -24,7 +24,7 @@ class App extends React.Component {
         ],
         id: 0,
         label: "3-1-4-2",
-        shirtArr: {label: "Plain", shirtCode: 'ShirtSvg'},
+        shirtArr: 'Plain',
         lineup: [1, 3, 1, 4, 0, 2],
         hexPrim: '#000099',
         hexSec: '#000099',
@@ -39,8 +39,8 @@ class App extends React.Component {
 
     handleShirtChange = (e) => {
         const id = e.target.value;
-        const shirtArr = shirtType[id];
-        this.setState({shirtArr: shirtArr});
+        const shirtChange = shirtType[id];
+        this.setState({shirtArr: shirtChange.label});
     }
 
   handleColourChange = (e) => {
@@ -163,6 +163,7 @@ class App extends React.Component {
                            playersToChild = {this.state.players}
                            handleNameChange = {this.handleNameChange}
                            formations = {this.state.lineup}
+                           shirtType = {this.state.shirtArr}
                        />
                    </div>
                </div>
@@ -206,10 +207,10 @@ const numberColours = [
 ]
 
 const shirtType = [
-    {label: "Plain", shirtCode: 'ShirtSvg'},
-    {label: "Raglan", shirtCode: 'ShirtSleeveSvg'},
-    {label: "Striped", shirtCode: 'ShirtStripeSvg'},
-    {label: "Hooped", shirtCode: 'ShirtHoopSvg'},
+    {label: "Plain"},
+    {label: "Raglan"},
+    {label: "Striped"},
+    {label: "Hooped"},
 ]
 
 

@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Pitch from "./Pitch";
+import Navbar from "./Navbar";
 
 
 
@@ -10,17 +11,17 @@ class App extends React.Component {
     super(props);
     this.state = {
         players: [
-            {id: 0, name: "John", number: 1},
-            {id: 1, name: "Joe", number: 2},
-            {id: 2, name: "Shelvy", number: 3},
-            {id: 3, name: "Has", number: 4},
-            {id: 4, name: "Nice", number: 5},
-            {id: 5, name: "Ears", number: 6},
-            {id: 6, name: "If", number: 7},
-            {id: 7, name: "You", number: 8},
-            {id: 8, name: "Look", number: 9},
-            {id: 9, name: "Very", number: 10},
-            {id: 10, name: "Closely", number: 11},
+            {id: 0, name: "Click to edit", number: 1},
+            {id: 1, name: "Click to edit", number: 2},
+            {id: 2, name: "Click to edit", number: 3},
+            {id: 3, name: "Click to edit", number: 4},
+            {id: 4, name: "Click to edit", number: 5},
+            {id: 5, name: "Click to edit", number: 6},
+            {id: 6, name: "Click to edit", number: 7},
+            {id: 7, name: "Click to edit", number: 8},
+            {id: 8, name: "Click to edit", number: 9},
+            {id: 9, name: "Click to edit", number: 10},
+            {id: 10, name: "Click to edit", number: 11},
         ],
         id: 0,
         label: "3-1-4-2",
@@ -71,8 +72,6 @@ class App extends React.Component {
       const currentPlayer = players[e.target.id];
       currentPlayer.number = newValue;
       this.setState({currentPlayer});
-      const digits = newValue.toString().split('');
-      const realDigits = digits.map(Number);
   }
 
   handleNameChange = (e) => {
@@ -88,83 +87,96 @@ class App extends React.Component {
   render() {
        return (
            <div className="App">
-               <div className="sidebar">
-                   <select onChange={this.handleFormationChange} >
-                       <option>{this.state.label}</option>
-                       {formations.map(({label}, index) => {
-                               return (
-                                   <option value={index}>{label}</option>
-                               );
-                           }
-                       )}
-                   </select>
-                   <select onChange={this.handleShirtChange} >
-                       <option>{}</option>
-                       {shirtType.map(({label}, index) => {
-                               return (
-                                   <option value={index}>{label}</option>
-                               );
-                           }
-                       )}
-                   </select>
-                   <select onChange={this.handleColourChange} >
-                       <option>{}</option>
-                       {colours.map(({label}, index) => {
-                               return (
-                                   <option value={index}>{label}</option>
-                               );
-                           }
-                       )}
-                   </select>
-                   <select onChange={this.handleSecondColourChange} >
-                       <option>{}</option>
-                       {colours.map(({label}, index) => {
-                               return (
-                                   <option value={index}>{label}</option>
-                               );
-                           }
-                       )}
-                   </select>
-                   <select onChange={this.handleNumberColourChange} >
-                       <option>{}</option>
-                       {numberColours.map(({label}, index) => {
-                               return (
-                                   <option value={index}>{label}</option>
-                               );
-                           }
-                       )}
-                   </select>
-                   {this.state.players.map(({name,number, id}) => {
-                       return (
-                           <div className="player-text-wrapper">
-                               <input
-                                   id={id}
-                                   className="player-edit"
-                                   type="text"
-                                   value={number}
-                                   onChange={this.handleNumberChange}
-                               />
-                               <input
-                                   id={id}
-                                   className="player-edit"
-                                   type="text"
-                                   value={name}
-                                   onChange={this.handleNameChange}
-                               />
-                           </div>
-                       );
-                   })}
-               </div>
-               <div className="pitch-div">
-                   <div className="pitch">
-                       <Pitch
-                           idToChild = {this.state.id}
-                           colourToChild = {this.state.hex}
-                           playersToChild = {this.state.players}
-                           handleNameChange = {this.handleNameChange}
-                           formations = {this.state.lineup}
-                           shirtType = {this.state.shirtArr}
-                       />
+               <Navbar />
+               <div className="App-container px-8 lg:flex-row md:flex-row sm:flex-col xs:flex-col">
+                   <div className="sidebar bg-gray-700 px-3 py-2 rounded-lg
+                   lg:order-first lg:w-1/3
+                   md:order-first md:w-1/3
+                   sm:w-2/3 sm:mx-auto sm:order-last
+                   xs:w-2/3 xs:mx-auto xs:order-last">
+                       <b className="pt-2 text-white">Formation:</b>
+                       <select className="text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={this.handleFormationChange} >
+                           <option defaultValue={true}>Select Option</option>
+                           {formations.map(({label}, index) => {
+                                   return (
+                                       <option value={index}>{label}</option>
+                                   );
+                               }
+                           )}
+                       </select>
+                       <b className="text-white pt-3">Shirt Type:</b>
+                       <select className="text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={this.handleShirtChange} >
+                           <option defaultValue={true}>Select Option</option>
+                           {shirtType.map(({label}, index) => {
+                                   return (
+                                       <option value={index}>{label}</option>
+                                   );
+                               }
+                           )}
+                       </select>
+                       <b className="text-white pt-3">Primary Shirt Colour:</b>
+                       <select className="text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={this.handleColourChange} >
+                           <option defaultValue={true}>Select Option</option>
+                           {colours.map(({label}, index) => {
+                                   return (
+                                       <option value={index}>{label}</option>
+                                   );
+                               }
+                           )}
+                       </select>
+                       <b className="text-white pt-3">Secondary Shirt Colour:</b>
+                       <select className="text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={this.handleSecondColourChange} >
+                           <option defaultValue={true}>Select Option</option>
+                           {colours.map(({label}, index) => {
+                                   return (
+                                       <option value={index}>{label}</option>
+                                   );
+                               }
+                           )}
+                       </select>
+                       <b className="text-white pt-3">Shirt Number Colour:</b>
+                       <select className="text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={this.handleNumberColourChange} >
+                           <option defaultValue={true}>Select Option</option>
+                           {numberColours.map(({label}, index) => {
+                                   return (
+                                       <option  value={index}>{label}</option>
+                                   );
+                               }
+                           )}
+                       </select>
+                       <b className="text-white pt-3">Player Information:</b>
+                       {this.state.players.map(({name,number, id}) => {
+                           return (
+                               <div className="player-text-wrapper bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                   <input
+                                       id={id}
+                                       className="player-edit bg-gray-50 p-0.5 text-sm"
+                                       type="text"
+                                       value={number}
+                                       onChange={this.handleNumberChange}
+                                   />
+                                   <input
+                                       id={id}
+                                       className="player-edit bg-gray-50 p-0.5 text-sm"
+                                       type="text"
+                                       value={name}
+                                       onChange={this.handleNameChange}
+                                   />
+                               </div>
+                           );
+                       })}
+                   </div>
+                   <div className="pitch-div sm:w-full xs:w-full">
+                       <div className="pitch">
+                           <Pitch
+                               idToChild = {this.state.id}
+                               colourToChild = {this.state.hex}
+                               playersToChild = {this.state.players}
+                               handleNameChange = {this.handleNameChange}
+                               formations = {this.state.lineup}
+                               shirtType = {this.state.shirtArr}
+                           />
+                       </div>
                    </div>
                </div>
            </div>
@@ -185,25 +197,26 @@ const formations = [
   {id: 9, label: "4-4-1-1", lineup: [1, 4, 0, 4, 1, 1]},
   {id: 10, label: "4-4-2", lineup: [1, 4, 0, 4, 0, 2]},
   {id: 11, label: "5-3-2", lineup: [1, 3, 2, 3, 0, 2]},
-  {id: 12, label: "5-4-1", lineup: [1, 5, 0, 4, 0, 1]}
+  {id: 12, label: "5-4-1", lineup: [1, 3, 2, 4, 0, 1]}
 ]
 
 const colours = [
-    {label: "blue", hex: '#000099'},
-    {label: "red", hex: '#ff0000'},
-    {label: "yellow", hex: '#ffff00'},
-    {label: "green", hex: '#009900'},
-    {label: "pink", hex: '#ff00ff'},
-    {label: "purple", hex: '#9900ff'},
-    {label: "white", hex: '#ffffff'},
-    {label: "black", hex: '#000000'},
+    {label: "Black", hex: '#000000'},
+    {label: "Blue", hex: '#000099'},
+    {label: "Green", hex: '#009900'},
+    {label: "Pink", hex: '#ff00ff'},
+    {label: "Purple", hex: '#9900ff'},
+    {label: "Red", hex: '#ff0000'},
+    {label: "White", hex: '#ffffff'},
+    {label: "Yellow", hex: '#ffff00'},
+
 ]
 
 const numberColours = [
-    {label: "red", numPrime: '#ff0000', numSec: '#ffffff'},
-    {label: "black", numPrime: '#000000', numSec: '#ffffff'},
-    {label: "white", numPrime: '#ffffff', numSec: '#000000'},
-    {label: "dark blue", numPrime: '#000066', numSec: '#ffffff'},
+    {label: "Black", numPrime: '#000000', numSec: '#ffffff'},
+    {label: "Dark Blue", numPrime: '#000066', numSec: '#ffffff'},
+    {label: "Red", numPrime: '#ff0000', numSec: '#ffffff'},
+    {label: "White", numPrime: '#ffffff', numSec: '#000000'},
 ]
 
 const shirtType = [

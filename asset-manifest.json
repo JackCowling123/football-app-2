@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/JackCowling123/football-app-2/static/css/main.66a070e5.css",
+    "main.js": "/JackCowling123/football-app-2/static/js/main.f4d20097.js",
+    "static/js/787.f6acc010.chunk.js": "/JackCowling123/football-app-2/static/js/787.f6acc010.chunk.js",
+    "static/media/IMG_7550.png": "/JackCowling123/football-app-2/static/media/IMG_7550.8a4e71595be25377a361.png",
+    "static/media/Starting-Lineup-Logo.png": "/JackCowling123/football-app-2/static/media/Starting-Lineup-Logo.f42fa1b64a8fccd7eddf.png",
+    "index.html": "/JackCowling123/football-app-2/index.html",
+    "main.66a070e5.css.map": "/JackCowling123/football-app-2/static/css/main.66a070e5.css.map",
+    "main.f4d20097.js.map": "/JackCowling123/football-app-2/static/js/main.f4d20097.js.map",
+    "787.f6acc010.chunk.js.map": "/JackCowling123/football-app-2/static/js/787.f6acc010.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.66a070e5.css",
+    "static/js/main.f4d20097.js"
+  ]
+}

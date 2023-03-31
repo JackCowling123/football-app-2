@@ -2,7 +2,7 @@
   "name": "football-app",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://github.com.io/JackCowling123/football-app-2",
+  "homepage": "https://JackCowling123.github.com.io/football-app-2",
   "dependencies": {
     "@headlessui/react": "^1.7.13",
     "@heroicons/react": "^2.0.16",

@@ -6,7 +6,7 @@ Starting Lineup is a football lineup app which allows the user to edit and displ
 
 To use this project online via GitHub go to: https://jackcowling123.github.io/football-app-2/ or alternatively follow the steps below:
 
-1. Open your terminal and then type  $ git clone https://github.com/JackCowling123/football-app-2  This clones the repo 
+1. Open your terminal and then type  $ git clone https://github.com/JackCowling123/football-app-2 This clones the repo 
 2. cd into the new folder and type  $ npm install  This installs the required dependencies 
 3. To run the React project. $ npm start
 
